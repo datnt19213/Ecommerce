@@ -23,6 +23,9 @@ type CarouselProps = {
     slidesToScrollOnMb?: number;
     listItem?: ProductType[];
 };
+
+
+// card
 function CarouselBigCard(props: CarouselProps) {
     const {
         length = 8,
