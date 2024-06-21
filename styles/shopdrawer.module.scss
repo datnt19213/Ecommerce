@@ -1,0 +1,211 @@
+// style.module.scss
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.hover-bg-none:hover {
+  background: none;
+}
+
+.hover-opacity-70:hover {
+  opacity: 0.7;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-deepDark {
+  color: #333333; // assuming deepDark is #333333
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.p-9 {
+  padding: 2.25rem;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.rounded-lg {
+  border-radius: 0.75rem;
+}
+
+.z-999 {
+  z-index: 999;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.rounded-full {
+  border-radius: 50%;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-deepDark {
+  border-color: #333333;
+}
+
+.border-opacity-10 {
+  border-color: rgba(51, 51, 51, 0.1); 
+}
+
+.group-hover\:rotate-90:hover {
+  transform: rotate(90deg);
+}
+
+.ease-in-out {
+  transition-timing-function: ease-in-out;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.gap-1\.5 {
+  gap: 0.375rem;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+}
+
+.bg-gray {
+  background-color: gray;
+}
+
+.rounded-full {
+  border-radius: 50%;
+}
+
+.h-6 {
+  height: 1.5rem;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.group-hover\:bg-deepDark:hover {
+  background-color: #333333;
+}
+
+.group-hover\:text-white:hover {
+  color: white;
+}
+
+.text-deepDark {
+  color: #333333;
+}
+
+.relative {
+  position: relative;
+}
+
+.before-absolute::before {
+  content: '';
+  position: absolute;
+}
+
+.before-content-empty::before {
+  content: '';
+}
+
+.before-left-0::before {
+  left: 0;
+}
+
+.before-w-0::before {
+  width: 0;
+}
+
+.before-transition-all::before {
+  transition: all 0.5s ease;
+}
+
+.before-duration-500::before {
+  transition-duration: 500ms;
+}
+
+.before-ease::before {
+  transition-timing-function: ease;
+}
+
+.before-bottom-0\.5::before {
+  bottom: -0.125rem;
+}
+
+.before-bg-deepDark::before {
+  background-color: #333333;
+}
+
+.before-h-\[1px\]::before {
+  height: 1px;
+}
+
+.group-hover\:before-w-full:hover::before {
+  width: 100%;
+}

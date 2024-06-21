@@ -1,0 +1,84 @@
+// _variables.scss
+$color-white: #fff;
+$color-deepDark: #000; 
+
+// _mixins.scss
+@mixin transition($duration) {
+  transition: all $duration ease-in-out;
+}
+
+@mixin font-bold {
+  font-weight: bold;
+}
+
+// _styles.scss
+.navContainer {
+  width: 100%;
+  max-height: 93px;
+  padding: 2.125rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: $color-white;
+  z-index: 900;
+
+  &.hidden {
+    position: absolute;
+  }
+
+  &.visible {
+    position: fixed;
+    top: 0;
+    background-color: $color-white;
+    color: $color-deepDark;
+    @include transition(0.3s);
+    animation: slide-top-bottom 0.3s;
+  }
+
+  border-top: 1px solid $color-white;
+  padding: 0 2rem;
+
+  .innerContainer {
+    max-width: 100rem;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: $color-white;
+
+    .button {
+      font-weight: 900;
+      font-size: 1rem;
+      
+      &.dark {
+        color: $color-deepDark;
+      }
+    }
+
+    .flexCenter {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      .hoverOpacity {
+        &:hover {
+          opacity: 0.7;
+        }
+        @include transition(0.3s);
+      }
+    }
+  }
+}
+
+// Keyframes for slide-top-bottom animation
+@keyframes slideTopBottom {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

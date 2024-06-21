@@ -1,25 +1,102 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 
+import {Topbar} from "./components/topbar";
+import {Menu} from "./components/menu";
+import Buttons from "./components/test/Button";
+import Link from "./components/test/ButtonLink";
+import {SearchDrawer, ShopDrawer} from "./components/drawer";
+import FlexContainer from "./components/test/FlexContainer";
+import ComboButtonMenu from "./components/test/ComboButtonMenu";
+import Home from "./components/test/Home";
+import Categories from "./components/test/CategoriesHome";
+import ScrollBanner from "./components/test/ScrollBanner";
+
 export const PLASMIC = initPlasmicLoader({
   projects: [
     {
       id: "diwSHPJQ2PKVbTFt5CMn8w",
-      token: "iVRNWWydOFAdK2vbWuOlp2d90op8RixSO4juH222NgGWWEuYIDft6KAcwQQlz8HrGO9rxqrB7zMKOd1UNxrw",
+      token:
+        "iVRNWWydOFAdK2vbWuOlp2d90op8RixSO4juH222NgGWWEuYIDft6KAcwQQlz8HrGO9rxqrB7zMKOd1UNxrw",
     },
   ],
 
-  // By default Plasmic will use the last published version of your project.
-  // For development, you can set preview to true, which will use the unpublished
-  // project, allowing you to see your designs without publishing.  Please
-  // only use this for development, as this is significantly slower.
   preview: false,
 });
 
-// You can register any code components that you want to use here; see
-// https://docs.plasmic.app/learn/code-components-ref/
-// And configure your Plasmic project to use the host url pointing at
-// the /plasmic-host page of your nextjs app (for example,
-// http://localhost:3000/plasmic-host).  See
-// https://docs.plasmic.app/learn/app-hosting/#set-a-plasmic-project-to-use-your-app-host
-
-// PLASMIC.registerComponent(...);
+PLASMIC.registerComponent(Topbar, {
+  name: "TopBar",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(Menu, {
+  name: "Menu",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(Buttons, {
+  name: "Buttons",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(Link, {
+  name: "ButtonLink",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(SearchDrawer, {
+  name: "SearchDrawer",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(ShopDrawer, {
+  name: "ShopDrawer",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(FlexContainer, {
+  name: "FlexContainer",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(ComboButtonMenu, {
+  name: "ComboButtonMenu",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(Home, {
+  name: "Home",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(Categories, {
+  name: "Categories",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(ScrollBanner, {
+  name: "Scroll Banner",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
