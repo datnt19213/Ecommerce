@@ -1,3 +1,4 @@
+// #region old
 // "use client";
 // import React, {useEffect, useState} from "react";
 
@@ -140,6 +141,7 @@
 // };
 
 // export default SearchDrawer;
+// #endregion
 "use client";
 import React, {useEffect, useState} from "react";
 
@@ -151,6 +153,14 @@ import {Button} from "../button";
 import styles from "@/styles/searchdrawer.module.scss";
 import {Props} from "@/type";
 
+const lists = [
+  {label: "Noise-Cancelling", value: "noise-cancelling"},
+  {label: "Paris Saint-Germain", value: "paris-saint-germain"},
+  {label: "Sport Earphones", value: "sport-earphones"},
+  {label: "Automobili Lamborghini", value: "automobili-lamborghini"},
+  {label: "FAQ", value: "faq"},
+];
+
 const SearchDrawer = ({children, className, verbose}: Props) => {
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<DrawerProps["placement"]>("left");
@@ -159,6 +169,8 @@ const SearchDrawer = ({children, className, verbose}: Props) => {
   const [isHideNav, setIsHideNav] = useState(false);
 
   const [search, setSearch] = useState("");
+  const [hoverSearch, setHoverSearch] = useState("");
+  const [showClearSearch, setShowClearSearch] = useState(false);
 
   useEffect(() => {
     const scrollDown = () => {
@@ -179,6 +191,14 @@ const SearchDrawer = ({children, className, verbose}: Props) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (search == "") {
+      setShowClearSearch(false);
+    } else {
+      setShowClearSearch(true);
+    }
+  }, [search]);
+
   const showDrawer = () => {
     setOpen(true);
   };
@@ -195,24 +215,27 @@ const SearchDrawer = ({children, className, verbose}: Props) => {
     <>
       <Space>
         <Button
-          className={`${styles.flex} ${styles.itemsCenter} ${className} ${
-            styles.hoverBgNone
-          } ${styles.hoverOpacity70} ${styles.duration300} ${styles.p3} ${
-            styles.transitionAll
-          } ${styles.fontBold} ${styles.gap2} ${
-            !isHideNav ? styles.textWhite : styles.textDeepDark
-          }`}
+          className={`${className}`}
           onClick={showDrawer}
           style={{
             backgroundColor: "transparent",
             borderWidth: "0px",
             borderColor: "transparent",
             color: "#fff",
+            display: "flex",
+            alignItems: "center",
+            transition: "opacity 0.3s ease, transform 0.3s ease",
+            fontWeight: "bold",
+            gap: "0.5rem",
           }}
         >
           <Search
             strokeWidth={2}
-            className={`${styles.transitionAll} ${styles.w5} ${styles.h5}`}
+            style={{
+              width: "1.5rem",
+              height: "1.5rem",
+              transition: "0.3s ease",
+            }}
           />
         </Button>
       </Space>
@@ -226,89 +249,139 @@ const SearchDrawer = ({children, className, verbose}: Props) => {
         contentWrapperStyle={{boxShadow: "none"}}
       >
         <div
-          className={`${styles.p9} ${styles.flex} ${styles.flexCol} ${styles.gap8} ${styles.bgWhite} ${styles.hFull} ${styles.roundedLg} ${styles.z999}`}
+          style={{
+            padding: "2.3rem",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "start",
+            gap: "1rem",
+            backgroundColor: "white",
+            height: "100%",
+            borderRadius: "0.5rem",
+            zIndex: "999",
+          }}
         >
           <div
-            className={`${styles.grid} ${styles.gridCols5} ${styles.h16} ${styles.pb3} ${styles.borderB2} ${styles.borderGraySlay}`}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+              height: "4rem",
+              paddingBottom: "0.75rem",
+              borderBottom: "2px solid #F0F0F0",
+              position: "relative",
+              gap: "0.6rem",
+            }}
           >
-            <input
-              type="text"
-              name=""
-              value={search}
-              id="search-input"
-              className={`${styles.colSpan4} ${styles.focusOutlineNone} ${styles.wFull} ${styles.text3xl} ${styles.fontBold} ${styles.placeholderText3xl} ${styles.placeholderFontBold} ${styles.placeholderTextGraySlay}`}
-              placeholder="Search for..."
-              onChange={(e) => setSearch(e.target.value)}
-            />
             <div
-              className={`${styles.flex} ${styles.itemsCenter} ${styles.justifyCenter}`}
+              style={{
+                gridColumn: "span 4",
+              }}
+            >
+              <input
+                type="text"
+                name=""
+                value={search}
+                id="search-input"
+                onFocus={(e) => (e.currentTarget.style.outline = "none")}
+                style={{
+                  fontSize: "2rem",
+                  fontWeight: "bold",
+                  border: "none",
+                  width: "100%",
+                  backgroundColor: "#fff",
+                }}
+                placeholder="Search for..."
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+            <div
+              style={{
+                gridColumn: "span 1",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
             >
               <Button
-                className={styles.textGraySlay}
                 onClick={() => clearSearch()}
+                style={{
+                  backgroundColor: "transparent",
+                  border: "none",
+                  color: "#1A1A1AAA",
+                  fontWeight: "400",
+                  pointerEvents: showClearSearch ? "auto" : "none",
+                  opacity: showClearSearch ? "1" : "0",
+                  transition: "0.3s ease",
+                }}
               >
                 Clear
               </Button>
-              <Button onClick={onClose}>
+              <Button
+                onClick={onClose}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "transparent",
+                  border: "none",
+                }}
+              >
                 <XIcon className={`w-5 h-5 m-auto ${styles.textDeepDark}`} />
               </Button>
             </div>
           </div>
-          <div className={styles.wFull}>
-            <div
-              className={`${styles.cursorPointer} ${styles.flex} ${styles.justifyBetween} ${styles.itemsCenter} ${styles.py3} ${styles.gap1} ${styles.fontBold} ${styles.group} ${styles.overflowHidden}`}
+          <div
+            style={{
+              padding: ".5rem 0px 0px 0px",
+            }}
+          >
+            <span
+              style={{
+                fontWeight: "bold",
+                color: "#1A1A1A88",
+              }}
             >
+              Popular Requests
+            </span>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+            }}
+          >
+            {lists.map((data, index) => (
               <span
-                className={`${styles.fontBold} ${styles.relative} ${styles.textNeutral600}`}
+                style={{
+                  fontSize: "1.5rem",
+                  fontWeight: "bold",
+                  position: "relative",
+                  cursor: "pointer",
+                  width: "fit-content",
+                }}
+                onMouseOver={() => {
+                  setHoverSearch(data.value);
+                }}
+                onMouseLeave={() => {
+                  setHoverSearch("");
+                }}
               >
-                Popular Requests
+                {data.label}
+                <div
+                  style={{
+                    transition: "0.45s ease",
+                    position: "absolute",
+                    bottom: "0",
+                    left: "0",
+                    height: "1px",
+                    backgroundColor: "#1A1A1AEE",
+                    width: hoverSearch == data.value ? "100%" : "0%",
+                  }}
+                />
               </span>
-            </div>
-            <div
-              className={`${styles.cursorPointer} ${styles.flex} ${styles.justifyBetween} ${styles.itemsCenter} ${styles.py2} ${styles.gap1} ${styles.fontBold} ${styles.group} ${styles.overflowHidden}`}
-            >
-              <span
-                className={`${styles.text2xl} ${styles.fontBold} ${styles.relative} ${styles.beforeAbsolute} ${styles.beforeContentEmpty} ${styles.beforeLeft0} ${styles.beforeW0} ${styles.beforeTransitionAll} ${styles.beforeDuration500} ${styles.beforeEase} ${styles.beforeBottom05} ${styles.beforeBgDeepDark} ${styles.beforeH1px} ${styles.groupHoverBeforeWFull}`}
-              >
-                Noise-Cancelling
-              </span>
-            </div>
-            <div
-              className={`${styles.cursorPointer} ${styles.flex} ${styles.justifyBetween} ${styles.itemsCenter} ${styles.py2} ${styles.gap1} ${styles.fontBold} ${styles.group} ${styles.overflowHidden}`}
-            >
-              <span
-                className={`${styles.text2xl} ${styles.fontBold} ${styles.relative} ${styles.beforeAbsolute} ${styles.beforeContentEmpty} ${styles.beforeLeft0} ${styles.beforeW0} ${styles.beforeTransitionAll} ${styles.beforeDuration500} ${styles.beforeEase} ${styles.beforeBottom05} ${styles.beforeBgDeepDark} ${styles.beforeH1px} ${styles.groupHoverBeforeWFull}`}
-              >
-                Paris Saint-Germain
-              </span>
-            </div>
-            <div
-              className={`${styles.cursorPointer} ${styles.flex} ${styles.justifyBetween} ${styles.itemsCenter} ${styles.py2} ${styles.gap1} ${styles.fontBold} ${styles.group} ${styles.overflowHidden}`}
-            >
-              <span
-                className={`${styles.text2xl} ${styles.fontBold} ${styles.relative} ${styles.beforeAbsolute} ${styles.beforeContentEmpty} ${styles.beforeLeft0} ${styles.beforeW0} ${styles.beforeTransitionAll} ${styles.beforeDuration500} ${styles.beforeEase} ${styles.beforeBottom05} ${styles.beforeBgDeepDark} ${styles.beforeH1px} ${styles.groupHoverBeforeWFull}`}
-              >
-                Sport Earphones
-              </span>
-            </div>
-            <div
-              className={`${styles.cursorPointer} ${styles.flex} ${styles.justifyBetween} ${styles.itemsCenter} ${styles.py2} ${styles.gap1} ${styles.fontBold} ${styles.group} ${styles.overflowHidden}`}
-            >
-              <span
-                className={`${styles.text2xl} ${styles.fontBold} ${styles.relative} ${styles.beforeAbsolute} ${styles.beforeContentEmpty} ${styles.beforeLeft0} ${styles.beforeW0} ${styles.beforeTransitionAll} ${styles.beforeDuration500} ${styles.beforeEase} ${styles.beforeBottom05} ${styles.beforeBgDeepDark} ${styles.beforeH1px} ${styles.groupHoverBeforeWFull}`}
-              >
-                Automobili Lamborghini
-              </span>
-            </div>
-            <div
-              className={`${styles.cursorPointer} ${styles.flex} ${styles.justifyBetween} ${styles.itemsCenter} ${styles.py2} ${styles.gap1} ${styles.fontBold} ${styles.group} ${styles.overflowHidden}`}
-            >
-              <span
-                className={`${styles.text2xl} ${styles.fontBold} ${styles.relative} ${styles.beforeAbsolute} ${styles.beforeContentEmpty} ${styles.beforeLeft0} ${styles.beforeW0} ${styles.beforeTransitionAll} ${styles.beforeDuration500} ${styles.beforeEase} ${styles.beforeBottom05} ${styles.beforeBgDeepDark} ${styles.beforeH1px} ${styles.groupHoverBeforeWFull}`}
-              >
-                FAQ
-              </span>
-            </div>
+            ))}
           </div>
         </div>
       </Drawer>

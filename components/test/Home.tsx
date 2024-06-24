@@ -222,6 +222,7 @@ export default function Home({children, className, verbose}: Props) {
   // #endregion
 
   return (
+    // #region old
     // <div className="w-full bg-black">
     //   <div className="w-full h-[894px] overflow-hidden relative">
     //     <img
@@ -354,6 +355,7 @@ export default function Home({children, className, verbose}: Props) {
     //   </div>
     // </div>
 
+    // #endregion
     <div
       className={className}
       style={{width: "100%", backgroundColor: "black"}}

@@ -10,6 +10,8 @@ import ComboButtonMenu from "./components/test/ComboButtonMenu";
 import Home from "./components/test/Home";
 import Categories from "./components/test/CategoriesHome";
 import ScrollBanner from "./components/test/ScrollBanner";
+import ProductCardHome from "./components/test/ProductCardHome";
+import TextOverlay from "./components/test/TextOverlay";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -95,6 +97,20 @@ PLASMIC.registerComponent(Categories, {
 });
 PLASMIC.registerComponent(ScrollBanner, {
   name: "Scroll Banner",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(ProductCardHome, {
+  name: "Product Card Home",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(TextOverlay, {
+  name: "TextOverlay",
   props: {
     verbose: "boolean",
     children: "slot",
