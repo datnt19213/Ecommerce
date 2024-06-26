@@ -6,6 +6,7 @@ import {ChevronRight} from "lucide-react";
 import Earphones from "@/assets/images/earphone_card.webp";
 import Headphones from "@/assets/images/headphone_card.webp";
 import Accessories from "@/assets/images/accessories_card.webp";
+import {Props} from "@/type";
 
 const lists = [
   {
@@ -24,10 +25,11 @@ const lists = [
     image: Accessories.src,
   },
 ];
-const ProductCardHome = () => {
+const ProductCardHome = ({className, children}: Props) => {
   const [hoveredCard, setHoveredCard] = useState("");
   return (
     <div
+      className={className}
       style={{
         display: "flex",
         gap: "1.5rem",

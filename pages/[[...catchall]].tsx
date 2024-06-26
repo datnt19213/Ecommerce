@@ -5,17 +5,17 @@ import {
   ComponentRenderData,
   PlasmicRootProvider,
 } from "@plasmicapp/loader-nextjs";
-import type { GetStaticPaths, GetStaticProps } from "next";
-
+import type {GetStaticPaths, GetStaticProps} from "next";
 import Error from "next/error";
-import { useRouter } from "next/router";
-import { PLASMIC } from "@/plasmic-init";
+import {useRouter} from "next/router";
+import {PLASMIC} from "@/plasmic-init";
+import {ChakraProvider} from "@chakra-ui/react";
 
 export default function PlasmicLoaderPage(props: {
   plasmicData?: ComponentRenderData;
   queryCache?: Record<string, any>;
 }) {
-  const { plasmicData, queryCache } = props;
+  const {plasmicData, queryCache} = props;
   const router = useRouter();
   if (!plasmicData || plasmicData.entryCompMetas.length === 0) {
     return <Error statusCode={404} />;
@@ -30,18 +30,25 @@ export default function PlasmicLoaderPage(props: {
       pageParams={pageMeta.params}
       pageQuery={router.query}
     >
-      <PlasmicComponent component={pageMeta.displayName} />
+      <ChakraProvider>
+        <PlasmicComponent component={pageMeta.displayName} />
+      </ChakraProvider>
     </PlasmicRootProvider>
   );
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { catchall } = context.params ?? {};
-  const plasmicPath = typeof catchall === 'string' ? catchall : Array.isArray(catchall) ? `/${catchall.join('/')}` : '/';
+  const {catchall} = context.params ?? {};
+  const plasmicPath =
+    typeof catchall === "string"
+      ? catchall
+      : Array.isArray(catchall)
+      ? `/${catchall.join("/")}`
+      : "/";
   const plasmicData = await PLASMIC.maybeFetchComponentData(plasmicPath);
   if (!plasmicData) {
     // non-Plasmic catch-all
-    return { props: {} };
+    return {props: {}};
   }
   const pageMeta = plasmicData.entryCompMetas[0];
   // Cache the necessary data fetched for the page
@@ -56,8 +63,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     </PlasmicRootProvider>
   );
   // Use revalidate if you want incremental static regeneration
-  return { props: { plasmicData, queryCache }, revalidate: 60 };
-}
+  return {props: {plasmicData, queryCache}, revalidate: 60};
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const pageModules = await PLASMIC.fetchPages();

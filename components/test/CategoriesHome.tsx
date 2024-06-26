@@ -23,14 +23,13 @@ const Categories = ({children, className, verbose}: Props) => {
     <div style={{display: "flex", gap: "1.7rem"}} className={className}>
       {lists.map((list, index) => (
         <div
-          onMouseEnter={() => setHoveredIndex(index)}
+          onMouseOver={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
           style={{
             position: "relative",
             cursor: "pointer",
-            minWidth: "16rem",
-            maxHeight: "16rem",
-            height: "100dvh",
+            maxWidth: "16rem",
+            width: "100dvh",
             overflow: "hidden",
             aspectRatio: 1,
             backgroundColor: "#eee",
@@ -51,7 +50,14 @@ const Categories = ({children, className, verbose}: Props) => {
               alignItems: "center",
             }}
           >
-            <img style={{height: "100%"}} src={list.image.src} />
+            <img
+              style={{
+                height: hoverIndex == index ? "105%" : "100%",
+                aspectRatio: "1",
+                transition: "0.6s ease-out",
+              }}
+              src={list.image.src}
+            />
           </div>
           <button
             type="button"

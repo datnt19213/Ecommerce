@@ -12,6 +12,10 @@ import Categories from "./components/test/CategoriesHome";
 import ScrollBanner from "./components/test/ScrollBanner";
 import ProductCardHome from "./components/test/ProductCardHome";
 import TextOverlay from "./components/test/TextOverlay";
+import ProductSlider from "./components/test/ProductSlider";
+import CardItem from "./components/test/CardItem";
+import TextContent from "./components/test/TextField";
+import CategoriesSection from "./components/test/CategoriesSection";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -72,6 +76,7 @@ PLASMIC.registerComponent(FlexContainer, {
   props: {
     verbose: "boolean",
     children: "slot",
+    className: "string",
   },
 });
 PLASMIC.registerComponent(ComboButtonMenu, {
@@ -107,10 +112,41 @@ PLASMIC.registerComponent(ProductCardHome, {
   props: {
     verbose: "boolean",
     children: "slot",
+    className: "string",
   },
 });
 PLASMIC.registerComponent(TextOverlay, {
   name: "TextOverlay",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+    className: "string",
+  },
+});
+PLASMIC.registerComponent(ProductSlider, {
+  name: "Product Slider",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(CardItem, {
+  name: "Card Item",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(TextContent, {
+  name: "Text Content",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+    text: "string",
+  },
+});
+PLASMIC.registerComponent(CategoriesSection, {
+  name: "Categories Section",
   props: {
     verbose: "boolean",
     children: "slot",
