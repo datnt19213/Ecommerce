@@ -121,7 +121,7 @@ const ProductSlider = ({children, className, verbose}: Props) => {
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1440,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -130,7 +130,7 @@ const ProductSlider = ({children, className, verbose}: Props) => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -138,7 +138,7 @@ const ProductSlider = ({children, className, verbose}: Props) => {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
