@@ -1,0 +1,84 @@
+/* category.home.module.css */
+
+.categories-container {
+  display: flex;
+  gap: 1.7rem;
+}
+
+.category-item {
+  position: relative;
+  cursor: pointer;
+  max-width: 16rem;
+  width: 100dvh;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background-color: #eee;
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.category-image-container {
+  height: 100%;
+  overflow: hidden;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-image {
+  height: 100%;
+  width: 100%;
+  transition: 0.6s ease-out;
+}
+
+
+
+.category-button {
+  pointer-events: none;
+  bottom: 0;
+  position: absolute;
+  padding: 0 1rem;
+  background-color: transparent;
+  color: #1a1a1a;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border: none;
+  height: 3rem;
+  align-items: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.category-icon-container {
+  height: 1.3rem;
+  aspect-ratio: 1;
+  border-radius: 100rem;
+  display: flex;
+  transition: 0.3s ease;
+  opacity: 0;
+  background-color: #1a1a1a;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+
+.special-text {
+  color: #fff;
+}
+
+.special-icon {
+  background-color: #fff;
+  color: #333;
+}
+.category-item:hover .category-image{
+  transform: scale(1.05)
+}
+
+.category-item:hover .category-icon-container {
+  opacity: 1;
+}

@@ -354,6 +354,7 @@ const SearchDrawer = ({children, className, verbose}: Props) => {
           >
             {lists.map((data, index) => (
               <span
+                key={index}
                 style={{
                   fontSize: "1.5rem",
                   fontWeight: "bold",

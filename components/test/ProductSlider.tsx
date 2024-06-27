@@ -503,7 +503,7 @@ const ProductSlider = ({children, className, verbose}: Props) => {
               <span className={styles["product-price"]}>{data.price}</span>
               <div className={styles["color-list"]}>
                 {data.colors.map((color: any, index: number) => (
-                  <div className={styles["color-indicator"]}>
+                  <div key={index} className={styles["color-indicator"]}>
                     <div className={styles["color-circle"]}>
                       {Array.isArray(color) ? (
                         color.map((c, jndex: number) => (
