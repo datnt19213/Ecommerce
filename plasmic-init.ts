@@ -16,6 +16,7 @@ import ProductSlider from "./components/test/ProductSlider";
 import CardItem from "./components/test/CardItem";
 import TextContent from "./components/test/TextField";
 import CategoriesSection from "./components/test/CategoriesSection";
+import CompareImageSlider from "./components/test/CompareImageSlider";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -147,6 +148,13 @@ PLASMIC.registerComponent(TextContent, {
 });
 PLASMIC.registerComponent(CategoriesSection, {
   name: "Categories Section",
+  props: {
+    verbose: "boolean",
+    children: "slot",
+  },
+});
+PLASMIC.registerComponent(CompareImageSlider, {
+  name: "Compare Image Slider",
   props: {
     verbose: "boolean",
     children: "slot",

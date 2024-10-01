@@ -68,17 +68,8 @@ function NextArrow(props: any) {
   const {className, style, onClick} = props;
   return (
     <div
-      className={className}
-      style={{
-        ...style,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "1.1rem",
-        height: "1.1rem",
-        backgroundColor: "#1A1A1A1A",
-        borderRadius: "100%",
-      }}
+      className={`${className} ${styles["right-arrow"]}`}
+      style={style}
       onClick={onClick}
     >
       <ChevronRight size={16} />
@@ -90,17 +81,8 @@ function PrevArrow(props: any) {
   const {className, style, onClick} = props;
   return (
     <div
-      className={className}
-      style={{
-        ...style,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "1.1rem",
-        height: "1.1rem",
-        backgroundColor: "#1A1A1A1A",
-        borderRadius: "100%",
-      }}
+      className={`${className} ${styles["left-arrow"]}`}
+      style={style}
       onClick={onClick}
     >
       <ChevronLeft size={16} />
@@ -121,7 +103,7 @@ const ProductSlider = ({children, className, verbose}: Props) => {
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1440,
+        breakpoint: 1600,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -130,7 +112,7 @@ const ProductSlider = ({children, className, verbose}: Props) => {
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1280,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -426,6 +408,9 @@ const ProductSlider = ({children, className, verbose}: Props) => {
       className={className}
       style={{
         maxWidth: "1600px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "3rem",
       }}
     >
       <div className={styles.container}>
